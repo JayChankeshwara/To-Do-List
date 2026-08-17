@@ -1,111 +1,1501 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
   box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #202126 0%,
+      #111216 42%,
+      #0c0d10 100%
+    );
+
+  color: #e8e8eb;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  min-height: 100vh;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+button,
+input {
+  font: inherit;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+button {
+  -webkit-tap-highlight-color: transparent;
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+
+
+/* =========================================================
+   APP
+   ========================================================= */
+
+.app {
+  width: 100%;
+  max-width: 1180px;
+
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  padding:
+    24px
+    14px
+    50px;
 }
-p {
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.app-header {
+  text-align: center;
+
+  margin-bottom: 20px;
+}
+
+.app-header h1 {
   margin: 0;
+
+  color: #f4f4f5;
+
+  font-size: 38px;
+  font-weight: 600;
+
+  letter-spacing: -0.04em;
+
+  line-height: 1;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.app-header p {
+  margin: 9px 0 0;
+
+  color: #858791;
+
+  font-size: 14px;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+.tabs {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 5px;
+
+  padding: 5px;
+
+  margin-bottom: 28px;
+
+  border:
+    1px solid #292b31;
+
+  border-radius: 13px;
+
+  background: rgba(22, 23, 28, 0.9);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.18);
+}
+
+.tabs button {
+  min-width: 0;
+
+  padding: 9px 5px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #858791;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.tabs button:hover {
+  color: #e5e5e8;
+  background: #202126;
+}
+
+.tabs button.active {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #303139,
+      #25262c
+    );
+
+  box-shadow:
+    inset 0 0 0 1px #3a3b43;
+}
+
+
+/* =========================================================
+   MAIN SECTION
+   ========================================================= */
+
+.tasks {
+  width: 100%;
+}
+
+.tasks > h2 {
+  margin: 0;
+
+  color: #f1f1f3;
+
+  font-size: 25px;
+  font-weight: 650;
+
+  letter-spacing: -0.025em;
+
+  text-align: center;
+}
+
+.tasks > p {
+  max-width: 520px;
+
+  margin:
+    8px auto
+    18px;
+
+  color: #777983;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   ADD TASK FORM
+   ========================================================= */
+
+.tasks > .add-task-form,
+.tasks form {
+  display: flex;
+
+  gap: 8px;
+
+  width: 100%;
+
+  margin:
+    18px 0
+    20px;
+}
+
+.tasks form input[type="text"] {
+  min-width: 0;
+  flex: 1;
+
+  padding:
+    11px
+    13px;
+
+  border:
+    1px solid #30323a;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #17181d;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.tasks form input[type="text"]::placeholder {
+  color: #60616a;
+}
+
+.tasks form input[type="text"]:focus {
+  border-color: #555762;
+
+  background: #1a1b20;
+}
+
+.tasks form button {
+  flex-shrink: 0;
+
+  padding:
+    11px
+    17px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #e6e6e9;
+
+  color: #15161a;
+
+  font-size: 14px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.tasks form button:hover {
+  background: #ffffff;
+}
+
+.tasks form button:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================================================
+   DAILY HISTORY
+   ========================================================= */
+
+.daily-history-container {
+  width: 100%;
+
+  margin-top: 18px;
+}
+
+
+/* =========================================================
+   WEEK NAVIGATION
+   ========================================================= */
+
+.daily-week-navigation {
+  display: grid;
+
+  grid-template-columns:
+    40px
+    minmax(0, 1fr)
+    40px;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 12px;
+}
+
+.daily-week-label {
+  min-width: 0;
+
+  color: #92939c;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-align: center;
+
+  white-space: nowrap;
+}
+
+.history-navigation-button {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid #30323a;
+
+  border-radius: 10px;
+
+  background: #18191e;
+
+  color: #e9e9eb;
+
+  font-size: 25px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.history-navigation-button:hover:not(:disabled) {
+  background: #24252b;
+  border-color: #44464f;
+}
+
+.history-navigation-button:disabled {
+  opacity: 0.25;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   HISTORY GRID
+   ========================================================= */
+
+.daily-history-scroll {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border:
+    1px solid #2a2c32;
+
+  border-radius: 14px;
+
+  background: #15161b;
+
+  scrollbar-width: thin;
+}
+
+.daily-history-grid {
+  /*
+   * Task name gets roughly 2 parts.
+   * Seven days share the remaining space.
+   */
+  display: grid;
+
+  grid-template-columns:
+    minmax(120px, 2fr)
+    repeat(7, minmax(42px, 1fr));
+
+  width: 100%;
+
+  min-width: 520px;
+}
+
+
+/* =========================================================
+   TASK HEADER
+   ========================================================= */
+
+.daily-task-name-header {
+  min-width: 0;
+
+  min-height: 76px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding:
+    12px
+    10px;
+
+  border-right:
+    1px solid #292b31;
+
+  border-bottom:
+    1px solid #292b31;
+
+  background: #17181d;
+
+  color: #e8e8eb;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DATE HEADER
+   ========================================================= */
+
+.daily-date {
+  min-width: 0;
+
+  min-height: 76px;
+
+  padding: 5px 2px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 2px;
+
+  border: none;
+
+  border-right:
+    1px solid #292b31;
+
+  border-bottom:
+    1px solid #292b31;
+
+  background: #17181d;
+
+  color: #747680;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.daily-date:hover {
+  background: #202127;
+  color: #b5b6bd;
+}
+
+.daily-date span {
+  font-size: 9px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.daily-date strong {
+  font-size: 17px;
+  font-weight: 600;
+
+  line-height: 1.1;
+}
+
+.daily-date small {
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   SELECTED / TODAY
+   ========================================================= */
+
+.daily-date.selected {
+  background:
+    linear-gradient(
+      180deg,
+      #332f22,
+      #27251e
+    );
+
+  color: #f3ca59;
+
+  box-shadow:
+    inset 0 -2px 0 #dcae3e;
+}
+
+.daily-date.selected span,
+.daily-date.selected strong,
+.daily-date.selected small {
+  color: #f3ca59;
+}
+
+.daily-date.today {
+  color: #e7bd52;
+}
+
+
+/* =========================================================
+   TASK ROW
+   ========================================================= */
+
+.daily-task-row {
+  grid-column: 1 / -1;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(120px, 2fr)
+    repeat(7, minmax(42px, 1fr));
+
+  min-height: 54px;
+
+  border-bottom:
+    1px solid #282a30;
+}
+
+.daily-task-row:last-child {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   TASK NAME
+   ========================================================= */
+
+.daily-task-name {
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  padding:
+    10px;
+
+  border-right:
+    1px solid #292b31;
+
+  background: #191a1f;
+
+  color: #dedfe3;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   DAILY CHECK CELLS
+   ========================================================= */
+
+.daily-cell {
+  min-width: 0;
+
+  width: 100%;
+  min-height: 54px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-right:
+    1px solid #292b31;
+
+  background: #191a1f;
+
+  color: #555760;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.daily-cell:hover {
+  background: #24252b;
+
+  color: #a8a9b0;
+}
+
+.daily-cell.completed {
+  color: #f1c654;
+
+  background: #202019;
+}
+
+.daily-cell.completed:hover {
+  background: #2a291f;
+}
+
+.daily-cell.future,
+.daily-cell.future:hover {
+  background: #16171b;
+
+  color: #383940;
+
+  cursor: not-allowed;
+}
+
+.daily-cell.future:disabled {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   DAILY EMPTY STATE
+   ========================================================= */
+
+.daily-empty-state {
+  grid-column: 1 / -1;
+
+  min-height: 120px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  padding: 25px;
+
+  background: #191a1f;
+
+  color: #70717a;
+
+  text-align: center;
+}
+
+.daily-empty-state strong {
+  color: #b4b5bc;
+
+  font-size: 13px;
+}
+
+.daily-empty-state span {
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   DAILY PERFORMANCE
+   ========================================================= */
+
+.daily-performance {
+  margin-top: 22px;
+
+  padding:
+    17px;
+
+  border:
+    1px solid #292b31;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #191a1f,
+      #15161a
+    );
+}
+
+.daily-performance-header {
+  margin-bottom: 17px;
+}
+
+.daily-performance-header h3 {
+  margin: 0;
+
+  color: #eeeeef;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.daily-performance-header p {
+  margin: 5px 0 0;
+
+  color: #72737c;
+
+  font-size: 12px;
+}
+
+.daily-performance-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.daily-performance-item {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.daily-performance-task {
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.daily-performance-task span {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: #d2d3d8;
+
+  font-size: 12px;
+}
+
+.daily-performance-bar {
+  display: grid;
+
+  grid-template-columns:
+    repeat(31, minmax(0, 1fr));
+
+  gap: 3px;
+
+  width: 100%;
+}
+
+.daily-performance-segment {
+  height: 7px;
+
+  border-radius: 3px;
+
+  background: #2d2e35;
+
+  transition:
+    transform 0.15s ease;
+}
+
+.daily-performance-segment.completed {
+  background: #dcb34d;
+}
+
+.daily-performance-segment.future {
+  background: #1d1e23;
+}
+
+.daily-performance-segment:hover {
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   WEEKLY TAB
+   ========================================================= */
+
+.weekly-navigation {
+  display: grid;
+
+  grid-template-columns:
+    40px
+    minmax(0, 1fr)
+    40px;
+
+  align-items: center;
+
+  gap: 10px;
+
+  max-width: 480px;
+
+  margin:
+    17px auto
+    0;
+}
+
+.weekly-week-label {
+  color: #aeb0b9;
+
+  font-size: 16px;
+
+  text-align: center;
+}
+
+.weekly-nav-arrow {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid #30323a;
+
+  border-radius: 10px;
+
+  background: #18191e;
+
+  color: #e9e9eb;
+
+  font-size: 24px;
+
+  cursor: pointer;
+}
+
+.weekly-nav-arrow:hover {
+  background: #24252b;
+}
+
+.weekly-current-button {
+  display: block;
+
+  margin:
+    10px auto
+    16px;
+
+  padding:
+    7px
+    12px;
+
+  border:
+    1px solid #34363e;
+
+  border-radius: 8px;
+
+  background: #1d1e23;
+
+  color: #bfc0c7;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.weekly-current-button:hover {
+  background: #282930;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   WEEKLY TASK LIST
+   ========================================================= */
+
+.weekly-task-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-top: 18px;
+}
+
+.weekly-task {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding:
+    13px;
+
+  border:
+    1px solid #292b31;
+
+  border-radius: 11px;
+
+  background: #191a1f;
+}
+
+.weekly-task:hover {
+  border-color: #393b43;
+  background: #1e1f24;
+}
+
+.weekly-task-main {
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.weekly-task-main input {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+
+  accent-color: #dcb34d;
+}
+
+.weekly-task-main span {
+  min-width: 0;
+
+  color: #e1e1e4;
+
+  font-size: 14px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.weekly-task-main span.completed {
+  color: #70717a;
+
+  text-decoration: line-through;
+}
+
+.weekly-task-actions {
+  display: flex;
+
+  gap: 6px;
+
+  flex-shrink: 0;
+}
+
+.weekly-task-actions button,
+.goal-actions button {
+  padding:
+    6px
+    9px;
+
+  border:
+    1px solid #34363e;
+
+  border-radius: 7px;
+
+  background: #202127;
+
+  color: #aaaab2;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.weekly-task-actions button:hover,
+.goal-actions button:hover {
+  background: #292a31;
+
+  color: #ffffff;
+}
+
+.weekly-empty-state,
+.goal-empty-state {
+  margin-top: 18px;
+
+  padding: 35px 18px;
+
+  border:
+    1px dashed #34363e;
+
+  border-radius: 12px;
+
+  color: #73747d;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   GOALS
+   ========================================================= */
+
+.add-goal-form {
+  display: flex;
+
+  gap: 8px;
+
+  margin:
+    18px 0
+    20px;
+}
+
+.add-goal-form input {
+  min-width: 0;
+  flex: 1;
+
+  padding:
+    11px
+    12px;
+
+  border:
+    1px solid #30323a;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #17181d;
+
+  color: #ffffff;
+}
+
+.add-goal-form input:focus,
+.add-goal-form select:focus {
+  border-color: #555762;
+}
+
+.add-goal-form select {
+  padding:
+    11px
+    10px;
+
+  border:
+    1px solid #30323a;
+
+  border-radius: 9px;
+
+  background: #17181d;
+
+  color: #d5d6da;
+
+  outline: none;
+}
+
+.add-goal-form button {
+  padding:
+    11px
+    15px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #e6e6e9;
+
+  color: #15161a;
+
+  font-weight: 650;
+
+  cursor: pointer;
+}
+
+.goal-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-top: 18px;
+}
+
+.goal-item {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding:
+    13px;
+
+  border:
+    1px solid #292b31;
+
+  border-radius: 11px;
+
+  background: #191a1f;
+}
+
+.goal-main {
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.goal-main input {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+
+  accent-color: #dcb34d;
+}
+
+.goal-main span {
+  min-width: 0;
+
+  color: #e1e1e4;
+
+  font-size: 14px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.goal-main span.completed {
+  color: #70717a;
+
+  text-decoration: line-through;
+}
+
+.goal-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  flex-shrink: 0;
+}
+
+.goal-priority {
+  padding:
+    4px
+    8px;
+
+  border-radius: 999px;
+
+  background: #292a31;
+
+  color: #bfc0c7;
+
+  font-size: 9px;
+  font-weight: 750;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.06em;
+}
+
+.priority-high {
+  color: #ef9696;
+}
+
+.priority-medium {
+  color: #e8c36b;
+}
+
+.priority-low {
+  color: #8dce9f;
+}
+
+
+/* =========================================================
+   FREE TIME
+   ========================================================= */
+
+.empty-state {
+  margin-top: 18px;
+
+  padding: 35px 18px;
+
+  border:
+    1px dashed #34363e;
+
+  border-radius: 12px;
+
+  color: #73747d;
+
+  text-align: center;
+}
+
+
+/*
+ * Free-time items use the existing .task markup.
+ */
+
+.tasks .task {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding:
+    13px;
+
+  margin-bottom: 8px;
+
+  border:
+    1px solid #292b31;
+
+  border-radius: 11px;
+
+  background: #191a1f;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.tasks .task:hover {
+  background: #1e1f24;
+
+  border-color: #393b43;
+}
+
+.tasks .task span {
+  min-width: 0;
+
+  flex: 1;
+
+  color: #dedfe3;
+
+  font-size: 14px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.tasks .task button {
+  flex-shrink: 0;
+
+  padding:
+    6px
+    9px;
+
+  border:
+    1px solid #34363e;
+
+  border-radius: 7px;
+
+  background: #202127;
+
+  color: #aaaab2;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.tasks .task button:hover {
+  background: #292a31;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 600px) {
+
+  .app {
+    padding:
+      34px
+      24px
+      60px;
+  }
+
+  .app-header h1 {
+    font-size: 46px;
+  }
+
+  .tabs {
+    max-width: 600px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tabs button {
+    padding:
+      10px
+      12px;
+
+    font-size: 13px;
+  }
+
+  .daily-history-grid {
+    grid-template-columns:
+      minmax(180px, 2fr)
+      repeat(7, minmax(58px, 1fr));
+
+    min-width: 0;
+  }
+
+  .daily-task-row {
+    grid-template-columns:
+      minmax(180px, 2fr)
+      repeat(7, minmax(58px, 1fr));
+  }
+
+  .daily-task-name {
+    padding:
+      12px
+      14px;
+
+    font-size: 13px;
+  }
+
+  .daily-cell {
+    min-height: 58px;
+  }
+
+  .daily-date {
+    min-height: 82px;
+  }
+
+  .daily-task-name-header {
+    min-height: 82px;
+  }
+
+  .daily-performance {
+    padding: 20px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 900px) {
+
+  .app {
+    padding:
+      44px
+      32px
+      70px;
+  }
+
+  .app-header {
+    margin-bottom: 24px;
+  }
+
+  .app-header h1 {
+    font-size: 52px;
+  }
+
+  .app-header p {
+    font-size: 15px;
+  }
+
+  .tabs {
+    margin-bottom: 34px;
+  }
+
+  .tasks > h2 {
+    font-size: 28px;
+  }
+
+  .daily-history-grid {
+    grid-template-columns:
+      minmax(230px, 2.2fr)
+      repeat(7, minmax(70px, 1fr));
+  }
+
+  .daily-task-row {
+    grid-template-columns:
+      minmax(230px, 2.2fr)
+      repeat(7, minmax(70px, 1fr));
+  }
+
+  .daily-task-name {
+    padding:
+      13px
+      16px;
+
+    font-size: 14px;
+  }
+
+  .daily-cell {
+    min-height: 62px;
+
+    font-size: 19px;
+  }
+
+  .daily-date {
+    min-height: 88px;
+  }
+
+  .daily-task-name-header {
+    min-height: 88px;
+
+    padding:
+      14px
+      16px;
+  }
+
+  .daily-date strong {
+    font-size: 19px;
+  }
+
+  .daily-performance {
+    padding: 22px;
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+  .daily-history-grid {
+    grid-template-columns:
+      minmax(280px, 2.5fr)
+      repeat(7, minmax(78px, 1fr));
+  }
+
+  .daily-task-row {
+    grid-template-columns:
+      minmax(280px, 2.5fr)
+      repeat(7, minmax(78px, 1fr));
+  }
+}
+
+.daily-cell.before-created {
+  cursor: default;
+  opacity: 0.35;
 }
