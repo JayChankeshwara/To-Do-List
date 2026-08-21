@@ -6,10 +6,8 @@
   width: 100%;
   max-width: 1280px;
   min-height: 100vh;
-
   margin: 0 auto;
   padding: 24px 28px 60px;
-
   box-sizing: border-box;
 }
 
@@ -25,9 +23,7 @@
 
 .app-header h1 {
   margin: 0;
-
   color: #f1f1f3;
-
   font-size: 52px;
   font-weight: 500;
   line-height: 1.1;
@@ -35,9 +31,7 @@
 
 .app-header p {
   margin: 14px 0 0;
-
   color: #8f9099;
-
   font-size: 18px;
 }
 
@@ -50,27 +44,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   gap: 4px;
-
   margin: 12px 0 4px;
 }
 
 .tabs button {
   padding: 9px 16px;
-
   border: 1px solid transparent;
   border-radius: 8px;
-
   background: transparent;
   color: #8f9099;
-
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
-
   cursor: pointer;
-
   transition:
     background 0.15s ease,
     color 0.15s ease,
@@ -99,22 +86,16 @@
 
 .tasks > h2 {
   margin: 0 0 12px;
-
   color: #eeeeef;
-
   font-size: 28px;
   font-weight: 600;
-
   text-align: center;
 }
 
 .tasks > p {
   margin: 0 0 14px;
-
   color: #777983;
-
   font-size: 14px;
-
   text-align: center;
 }
 
@@ -130,27 +111,20 @@
 .tasks form {
   display: flex;
   align-items: center;
-
   gap: 8px;
-
   margin: 16px 0 20px;
 }
 
 .tasks form input[type="text"] {
   flex: 1;
   min-width: 0;
-
   padding: 10px 12px;
-
   border: 1px solid #34353d;
   border-radius: 8px;
-
   background: #191a1f;
   color: #ffffff;
-
   font-family: inherit;
   font-size: 14px;
-
   outline: none;
 }
 
@@ -160,18 +134,13 @@
 
 .tasks form button {
   padding: 10px 16px;
-
   border: none;
   border-radius: 8px;
-
   background: #e5e5e8;
   color: #16171b;
-
   font-family: inherit;
   font-weight: 600;
-
   cursor: pointer;
-
   transition: background 0.15s ease;
 }
 
@@ -181,31 +150,24 @@
 
 
 /* =========================================================
-   GENERIC NAVIGATION BUTTON
+   NAVIGATION BUTTON
    ========================================================= */
 
 .history-navigation-button {
   width: 42px;
   height: 42px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 0;
-
   border: 1px solid #34353d;
   border-radius: 10px;
-
   background: #191a1f;
   color: #e5e5e8;
-
   font-family: inherit;
   font-size: 24px;
   line-height: 1;
-
   cursor: pointer;
-
   transition:
     background 0.15s ease,
     border-color 0.15s ease;
@@ -240,41 +202,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 16px;
-
   margin-bottom: 18px;
 }
 
 .daily-week-label {
   flex: 1;
-
   color: #8f9099;
-
   font-size: 16px;
   font-weight: 600;
-
   text-align: center;
 }
 
 
 /* =========================================================
-   DAILY HISTORY SCROLL AREA
+   DAILY HISTORY SCROLL
    ========================================================= */
 
 .daily-history-scroll {
   width: 100%;
-
   overflow-x: auto;
-  overflow-y: hidden;
-
+  overflow-y: visible;
   border: 1px solid #2b2c33;
   border-radius: 16px;
-
   background: #15161b;
-
   scroll-behavior: smooth;
-
   scrollbar-width: thin;
 }
 
@@ -283,23 +235,11 @@
    DAILY GRID
    ========================================================= */
 
-/*
-   DESKTOP
-
-   The grid uses the available width instead of forcing
-   unnecessarily large 100px columns.
-
-   Task column gets more space.
-   Seven days share the remaining width equally.
-*/
-
 .daily-history-grid {
   display: grid;
-
   grid-template-columns:
     minmax(260px, 1.7fr)
     repeat(7, minmax(72px, 1fr));
-
   width: 100%;
 }
 
@@ -310,26 +250,18 @@
 
 .daily-task-name-header {
   min-height: 118px;
-
   display: flex;
   align-items: center;
-
   padding: 18px 20px;
-
   border-right: 1px solid #2b2c33;
   border-bottom: 1px solid #2b2c33;
-
   background: #15161b;
-
   color: #f1f1f3;
-
   font-size: 18px;
   font-weight: 700;
-
   position: sticky;
   left: 0;
-
-  z-index: 4;
+  z-index: 10;
 }
 
 
@@ -340,28 +272,19 @@
 .daily-date {
   min-width: 0;
   min-height: 118px;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   gap: 4px;
-
   padding: 10px;
-
   border: none;
   border-right: 1px solid #2b2c33;
   border-bottom: 1px solid #2b2c33;
-
   background: #15161b;
   color: #858793;
-
   font-family: inherit;
-
   cursor: pointer;
-
   transition:
     background 0.2s ease,
     color 0.2s ease;
@@ -383,19 +306,14 @@
 
 .daily-date small {
   margin-top: 3px;
-
   font-size: 10px;
   font-weight: 700;
-
   letter-spacing: 0.05em;
 }
 
 .daily-date:hover {
   background: #202127;
 }
-
-
-/* Selected date */
 
 .daily-date.selected {
   background: #302e25;
@@ -408,15 +326,9 @@
   color: #ffc94d;
 }
 
-
-/* Today */
-
 .daily-date.today {
   color: #ffc94d;
 }
-
-
-/* Future date */
 
 .daily-date.future {
   color: #4d4e56;
@@ -437,15 +349,11 @@
 
 .daily-task-row {
   grid-column: 1 / -1;
-
   display: grid;
-
   grid-template-columns:
     minmax(260px, 1.7fr)
     repeat(7, minmax(72px, 1fr));
-
   min-height: 72px;
-
   border-bottom: 1px solid #292a30;
 }
 
@@ -460,147 +368,223 @@
 
 .daily-task-name {
   min-width: 0;
-
   display: flex;
   align-items: center;
-
-  gap: 10px;
-
+  gap: 8px;
   padding: 14px 16px;
-
   border-right: 1px solid #292a30;
-
   background: #191a1f;
-
   color: #e6e6e9;
-
   position: sticky;
   left: 0;
-
-  z-index: 2;
+  z-index: 8;
 }
 
 
-/* Task title */
+/* =========================================================
+   TASK TITLE
+   ========================================================= */
 
 .daily-task-title {
   min-width: 0;
   flex: 1;
-
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
   font-size: 15px;
 }
 
 
 /* =========================================================
-   DAILY TASK ACTIONS
+   DAILY TASK THREE-DOT BUTTON
    ========================================================= */
 
-.daily-task-actions {
+.daily-task-menu-button {
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
-
-  gap: 5px;
-
+  justify-content: center;
   flex-shrink: 0;
-}
-
-.daily-task-actions button {
-  padding: 5px 8px;
-
-  border: 1px solid transparent;
-  border-radius: 6px;
-
-  background: transparent;
-  color: #777983;
-
+  padding: 0;
+  border: 1px solid #34353d;
+  border-radius: 7px;
+  background: #202127;
+  color: #bfc0c8;
   font-family: inherit;
-  font-size: 11px;
-
+  font-size: 18px;
+  line-height: 1;
   cursor: pointer;
-
-  white-space: nowrap;
-
   transition:
     background 0.15s ease,
     color 0.15s ease,
     border-color 0.15s ease;
 }
 
-.daily-task-actions button:hover {
-  background: #25262d;
-  border-color: #34353d;
-  color: #ffffff;
-}
-
-.daily-task-actions button:hover {
+.daily-task-menu-button:hover {
   background: #292a31;
+  border-color: #4a4b55;
   color: #ffffff;
 }
 
 
 /* =========================================================
-   DAILY TASK EDIT
+   DAILY TASK ACTION POPUP
    ========================================================= */
 
-.daily-task-edit {
-  width: 100%;
+/*
+ * IMPORTANT:
+ *
+ * This popup is rendered OUTSIDE the daily grid.
+ *
+ * position: fixed prevents it from taking up any space
+ * inside the task row. This avoids the old blank/half-box
+ * problem when the three-dot button is clicked.
+ */
 
+.daily-task-action-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
   display: flex;
   align-items: center;
-
-  gap: 6px;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.62);
 }
 
-.daily-task-edit input {
-  min-width: 0;
-  flex: 1;
 
-  padding: 7px 8px;
+/* Popup itself */
 
-  border: 1px solid #4a4b55;
-  border-radius: 6px;
+.daily-task-action-popup {
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid #3b3c45;
+  border-radius: 14px;
+  background: #191a1f;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.55);
+}
 
-  background: #111217;
+
+/* Popup header */
+
+.daily-task-action-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #2f3038;
+  background: #202127;
+  color: #e5e5e8;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* Popup close button */
+
+.daily-task-action-close {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid #3b3c45;
+  border-radius: 7px;
+  background: #292a31;
+  color: #bfc0c8;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.daily-task-action-close:hover {
+  background: #34353d;
+  border-color: #50515b;
   color: #ffffff;
+}
 
+
+/* Selected task name */
+
+.daily-task-action-task-name {
+  padding: 18px;
+  color: #f1f1f3;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* Popup action buttons */
+
+.daily-task-action-buttons {
+  display: flex;
+  gap: 10px;
+  padding: 0 18px 18px;
+}
+
+
+/* Shared popup button styling */
+
+.daily-task-action-buttons button {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  border-radius: 8px;
   font-family: inherit;
   font-size: 14px;
-
-  outline: none;
-}
-
-.daily-task-edit input:focus {
-  border-color: #ffc94d;
-}
-
-.daily-task-edit button {
-  flex-shrink: 0;
-
-  padding: 6px 8px;
-
-  border: 1px solid #34353d;
-  border-radius: 6px;
-
-  background: #202127;
-  color: #b9bac1;
-
-  font-family: inherit;
-  font-size: 11px;
-
+  font-weight: 600;
   cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
-.daily-task-edit button:hover {
+
+/* Edit */
+
+.daily-task-action-edit {
+  border: 1px solid #3b3c45;
   background: #292a31;
+  color: #d8d9de;
+}
+
+.daily-task-action-edit:hover {
+  background: #34353d;
+  border-color: #50515b;
   color: #ffffff;
 }
 
-.daily-edit-save {
-  color: #ffc94d !important;
+
+/* Delete */
+
+.daily-task-action-delete {
+  border: 1px solid #5a3034;
+  background: #302023;
+  color: #ff9999;
+}
+
+.daily-task-action-delete:hover {
+  background: #3d272a;
+  border-color: #713b40;
+  color: #ffb0b0;
 }
 
 
@@ -610,22 +594,16 @@
 
 .daily-cell {
   min-width: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: none;
   border-right: 1px solid #292a30;
-
   background: #191a1f;
   color: #666873;
-
   font-size: 22px;
   font-weight: 600;
-
   cursor: pointer;
-
   transition:
     background 0.15s ease,
     color 0.15s ease;
@@ -643,7 +621,6 @@
 .daily-cell.completed {
   background: #25251f;
   color: #ffc94d;
-
   font-size: 23px;
   font-weight: 700;
 }
@@ -654,13 +631,9 @@
   transform: scale(1.03);
 }
 
-
-/* Future cells */
-
 .daily-cell.future {
   background: #17181c;
   color: #3f4047;
-
   cursor: not-allowed;
 }
 
@@ -680,13 +653,9 @@
 
 .daily-empty-state {
   grid-column: 1 / -1;
-
   padding: 50px 20px;
-
   text-align: center;
-
   background: #191a1f;
-
   color: #777983;
 }
 
@@ -698,10 +667,8 @@
 .daily-performance {
   margin-top: 28px;
   padding: 24px;
-
   border: 1px solid #2b2c33;
   border-radius: 16px;
-
   background: #15161b;
 }
 
@@ -711,32 +678,26 @@
 
 .daily-performance-header h3 {
   margin: 0;
-
   color: #f1f1f3;
-
   font-size: 20px;
   font-weight: 700;
 }
 
 .daily-performance-header p {
   margin: 6px 0 0;
-
   color: #777983;
-
   font-size: 14px;
 }
 
 .daily-performance-list {
   display: flex;
   flex-direction: column;
-
   gap: 18px;
 }
 
 .daily-performance-item {
   display: flex;
   flex-direction: column;
-
   gap: 9px;
 }
 
@@ -744,40 +705,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 12px;
 }
 
 .daily-performance-task span {
   min-width: 0;
-
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
   color: #dedee2;
-
   font-size: 15px;
 }
 
 .daily-performance-bar {
   display: grid;
-
   grid-template-columns:
     repeat(31, minmax(0, 1fr));
-
   gap: 4px;
-
   width: 100%;
 }
 
 .daily-performance-segment {
   height: 10px;
-
   border-radius: 999px;
-
   background: #303138;
-
   transition: transform 0.15s ease;
 }
 
@@ -801,10 +752,8 @@
 .weekly-performance {
   margin-top: 28px;
   padding: 24px;
-
   border: 1px solid #2b2c33;
   border-radius: 16px;
-
   background: #15161b;
 }
 
@@ -814,32 +763,26 @@
 
 .weekly-performance-header h3 {
   margin: 0;
-
   color: #f1f1f3;
-
   font-size: 20px;
   font-weight: 700;
 }
 
 .weekly-performance-header p {
   margin: 6px 0 0;
-
   color: #777983;
-
   font-size: 14px;
 }
 
 .weekly-performance-list {
   display: flex;
   flex-direction: column;
-
   gap: 18px;
 }
 
 .weekly-performance-item {
   display: flex;
   flex-direction: column;
-
   gap: 9px;
 }
 
@@ -847,48 +790,36 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 16px;
 }
 
 .weekly-performance-task span {
   min-width: 0;
-
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
   color: #dedee2;
-
   font-size: 15px;
 }
 
 .weekly-performance-task small {
   flex-shrink: 0;
-
   color: #777983;
-
   font-size: 13px;
 }
 
 .weekly-performance-bar {
   display: grid;
-
   grid-template-columns:
     repeat(7, minmax(0, 1fr));
-
   gap: 6px;
-
   width: 100%;
 }
 
 .performance-segment {
   height: 10px;
-
   border-radius: 999px;
-
   background: #303138;
-
   transition:
     background 0.2s ease,
     transform 0.2s ease;
@@ -909,51 +840,38 @@
 
 .weekly-navigation {
   display: grid;
-
-  grid-template-columns: 42px minmax(0, 1fr) 42px;
-
+  grid-template-columns:
+    42px minmax(0, 1fr) 42px;
   align-items: center;
-
   width: 100%;
   max-width: 520px;
-
   margin: 18px auto 0;
-
   gap: 12px;
 }
 
 .weekly-week-label {
   color: #aeb0bb;
-
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2;
-
   text-align: center;
 }
 
 .weekly-nav-arrow {
   width: 42px;
   height: 42px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 0;
-
   border: 1px solid #34353d;
   border-radius: 10px;
-
   background: #191a1f;
   color: #eeeeef;
-
   font-family: inherit;
   font-size: 25px;
   line-height: 1;
-
   cursor: pointer;
-
   transition:
     background 0.15s ease,
     border-color 0.15s ease;
@@ -966,23 +884,16 @@
 
 .weekly-current-button {
   display: block;
-
   margin: 10px auto 18px;
-
   padding: 7px 13px;
-
   border: 1px solid #3b3c45;
   border-radius: 7px;
-
   background: #202127;
   color: #bfc0c8;
-
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
-
   cursor: pointer;
-
   transition:
     background 0.15s ease,
     color 0.15s ease;
@@ -1001,9 +912,7 @@
 .weekly-task-list {
   display: flex;
   flex-direction: column;
-
   gap: 10px;
-
   margin-top: 20px;
 }
 
@@ -1011,16 +920,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 16px;
-
   padding: 16px 18px;
-
   border: 1px solid #2b2c33;
   border-radius: 12px;
-
   background: #191a1f;
-
   transition:
     background 0.2s ease,
     border-color 0.2s ease;
@@ -1033,27 +937,21 @@
 
 .weekly-task-main {
   min-width: 0;
-
   display: flex;
   align-items: center;
-
   gap: 12px;
 }
 
 .weekly-task-main input {
   width: 18px;
   height: 18px;
-
   flex-shrink: 0;
-
   cursor: pointer;
 }
 
 .weekly-task-main span {
   color: #e5e5e8;
-
   font-size: 16px;
-
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1071,21 +969,16 @@
 .weekly-task-actions {
   display: flex;
   gap: 8px;
-
   flex-shrink: 0;
 }
 
 .weekly-task-actions button {
   padding: 7px 11px;
-
   border: 1px solid #34353d;
   border-radius: 8px;
-
   background: #202127;
   color: #b9bac1;
-
   cursor: pointer;
-
   font-family: inherit;
 }
 
@@ -1094,45 +987,28 @@
   color: #ffffff;
 }
 
-.weekly-empty-state {
-  margin-top: 20px;
-  padding: 40px 20px;
 
-  border: 1px dashed #34353d;
-  border-radius: 12px;
-
-  text-align: center;
-
-  color: #777983;
-}
-
-
-/* Weekly edit */
+/* =========================================================
+   WEEKLY EDIT
+   ========================================================= */
 
 .weekly-task-edit {
   width: 100%;
-
   display: flex;
   align-items: center;
-
   gap: 8px;
 }
 
 .weekly-task-edit input {
   flex: 1;
   min-width: 0;
-
   padding: 9px 11px;
-
   border: 1px solid #454650;
   border-radius: 8px;
-
   background: #15161b;
   color: #ffffff;
-
   font-family: inherit;
   font-size: 15px;
-
   outline: none;
 }
 
@@ -1142,17 +1018,13 @@
 
 .weekly-task-edit button {
   padding: 8px 12px;
-
   border: 1px solid #34353d;
   border-radius: 8px;
-
   background: #202127;
   color: #d8d9de;
-
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
-
   cursor: pointer;
 }
 
@@ -1161,7 +1033,232 @@
   color: #ffffff;
 }
 
+/* =========================================================
+   WEEKLY TASK STATES
+   ========================================================= */
 
+.weekly-task.completed {
+  opacity: 0.72;
+}
+
+.weekly-task-editing {
+  border-color: #454650;
+  background: #15161b;
+}
+
+
+/* =========================================================
+   WEEKLY EMPTY STATE
+   ========================================================= */
+
+.weekly-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding: 40px 20px;
+  border: 1px dashed #34353d;
+  border-radius: 12px;
+  background: #191a1f;
+  text-align: center;
+  color: #777983;
+}
+
+.weekly-empty-state strong {
+  color: #bfc0c8;
+  font-size: 15px;
+}
+
+.weekly-empty-state span {
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   WEEKLY EDIT ACTIONS
+   ========================================================= */
+
+.weekly-task-edit-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.weekly-task-edit button {
+  min-width: 72px;
+}
+
+.weekly-task-edit .weekly-task-save {
+  border-color: transparent;
+  background: #ffc94d;
+  color: #17181c;
+}
+
+.weekly-task-edit .weekly-task-save:hover {
+  background: #ffd66b;
+  color: #17181c;
+}
+
+.weekly-task-edit .weekly-task-save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.weekly-task-edit .weekly-task-cancel {
+  border-color: #3b3c45;
+  background: #202127;
+  color: #bfc0c8;
+}
+
+.weekly-task-edit .weekly-task-cancel:hover {
+  background: #292a31;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   WEEKLY DELETE BUTTON
+   ========================================================= */
+
+.weekly-task-actions .weekly-task-delete {
+  color: #ff9999;
+}
+
+.weekly-task-actions .weekly-task-delete:hover {
+  background: #392527;
+  border-color: #513238;
+  color: #ffb0b0;
+}
+/* =========================================================
+   FREE TIME
+   ========================================================= */
+
+.free-time-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.free-time-task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid #2b2c33;
+  border-radius: 12px;
+  background: #191a1f;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.free-time-task:hover {
+  background: #202127;
+  border-color: #383943;
+}
+
+.free-time-task-title {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #e5e5e8;
+  font-size: 16px;
+}
+
+.free-time-task-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.free-time-task-actions button {
+  padding: 7px 11px;
+  border: 1px solid #34353d;
+  border-radius: 8px;
+  background: #202127;
+  color: #b9bac1;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.free-time-task-actions button:hover {
+  background: #292a31;
+  color: #ffffff;
+}
+
+/* Free Time edit */
+
+.free-time-task-edit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.free-time-task-edit input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid #454650;
+  border-radius: 8px;
+  background: #15161b;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.free-time-task-edit input:focus {
+  border-color: #ffc94d;
+}
+
+.free-time-task-edit-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.free-time-task-edit-actions button {
+  padding: 8px 12px;
+  border: 1px solid #34353d;
+  border-radius: 8px;
+  background: #202127;
+  color: #d8d9de;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.free-time-task-edit-actions button:hover {
+  background: #2a2b32;
+  color: #ffffff;
+}
+
+.free-time-task-edit-actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Empty state */
+
+.free-time-empty-state {
+  margin-top: 20px;
+  padding: 40px 20px;
+  border: 1px dashed #34353d;
+  border-radius: 12px;
+  text-align: center;
+  color: #777983;
+}
 /* =========================================================
    GOALS
    ========================================================= */
@@ -1169,9 +1266,7 @@
 .goal-list {
   display: flex;
   flex-direction: column;
-
   gap: 10px;
-
   margin-top: 20px;
 }
 
@@ -1179,16 +1274,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 16px;
-
   padding: 16px 18px;
-
   border: 1px solid #2b2c33;
   border-radius: 12px;
-
   background: #191a1f;
-
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
@@ -1202,27 +1292,21 @@
 
 .goal-main {
   min-width: 0;
-
   display: flex;
   align-items: center;
-
   gap: 12px;
 }
 
 .goal-main input {
   width: 18px;
   height: 18px;
-
   flex-shrink: 0;
-
   cursor: pointer;
 }
 
 .goal-main span {
   color: #e5e5e8;
-
   font-size: 16px;
-
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1245,23 +1329,17 @@
 .goal-actions {
   display: flex;
   align-items: center;
-
   gap: 8px;
-
   flex-shrink: 0;
 }
 
 .goal-priority {
   padding: 5px 9px;
-
   border-radius: 999px;
-
   background: #292a31;
   color: #bfc0c7;
-
   font-size: 11px;
   font-weight: 700;
-
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -1280,15 +1358,11 @@
 
 .goal-actions button {
   padding: 7px 10px;
-
   border: 1px solid #34353d;
   border-radius: 8px;
-
   background: #202127;
   color: #b9bac1;
-
   cursor: pointer;
-
   font-family: inherit;
 }
 
@@ -1300,12 +1374,9 @@
 .goal-empty-state {
   margin-top: 20px;
   padding: 40px 20px;
-
   border: 1px dashed #34353d;
   border-radius: 12px;
-
   text-align: center;
-
   color: #777983;
 }
 
@@ -1321,28 +1392,21 @@
 .goal-edit-form {
   min-width: 0;
   flex: 1;
-
   display: flex;
   align-items: center;
-
   gap: 10px;
 }
 
 .goal-edit-form input {
   flex: 1;
   min-width: 0;
-
   padding: 10px 12px;
-
   border: 1px solid #454650;
   border-radius: 8px;
-
   background: #15161b;
   color: #ffffff;
-
   font-family: inherit;
   font-size: 14px;
-
   outline: none;
 }
 
@@ -1352,20 +1416,93 @@
 
 .goal-edit-form select {
   padding: 10px 12px;
-
   border: 1px solid #454650;
   border-radius: 8px;
-
   background: #15161b;
   color: #d8d9de;
-
   font-family: inherit;
-
   outline: none;
 }
 
 .goal-edit-form select:focus {
   border-color: #ffc94d;
+}
+
+/* =========================================================
+   GOAL STATES
+   ========================================================= */
+
+.goal-item.completed {
+  opacity: 0.72;
+}
+
+
+/* =========================================================
+   GOAL EMPTY STATE
+   ========================================================= */
+
+.goal-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.goal-empty-state strong {
+  color: #bfc0c8;
+  font-size: 15px;
+}
+
+.goal-empty-state span {
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   GOAL EDIT ACTIONS
+   ========================================================= */
+
+.goal-actions .goal-save {
+  border-color: transparent;
+  background: #ffc94d;
+  color: #17181c;
+}
+
+.goal-actions .goal-save:hover {
+  background: #ffd66b;
+  color: #17181c;
+}
+
+.goal-actions .goal-save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.goal-actions .goal-cancel {
+  border-color: #3b3c45;
+  background: #202127;
+  color: #bfc0c8;
+}
+
+.goal-actions .goal-cancel:hover {
+  background: #292a31;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   GOAL DELETE BUTTON
+   ========================================================= */
+
+.goal-actions .goal-delete {
+  color: #ff9999;
+}
+
+.goal-actions .goal-delete:hover {
+  background: #392527;
+  border-color: #513238;
+  color: #ffb0b0;
 }
 
 
@@ -1375,9 +1512,7 @@
 
 .add-goal-form {
   display: flex;
-
   gap: 10px;
-
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -1385,18 +1520,13 @@
 .add-goal-form input {
   flex: 1;
   min-width: 0;
-
   padding: 11px 13px;
-
   border: 1px solid #34353d;
   border-radius: 9px;
-
   background: #191a1f;
   color: #ffffff;
-
   font-family: inherit;
   font-size: 14px;
-
   outline: none;
 }
 
@@ -1406,35 +1536,130 @@
 
 .add-goal-form select {
   padding: 11px 12px;
-
   border: 1px solid #34353d;
   border-radius: 9px;
-
   background: #191a1f;
   color: #d8d9de;
-
   font-family: inherit;
-
   outline: none;
 }
 
 .add-goal-form button {
   padding: 11px 16px;
-
   border: none;
   border-radius: 9px;
-
   background: #e5e5e8;
   color: #16171b;
-
   font-family: inherit;
   font-weight: 600;
-
   cursor: pointer;
 }
 
 .add-goal-form button:hover {
   background: #ffffff;
+}
+
+
+/* =========================================================
+   DAILY EDIT MODAL
+   ========================================================= */
+
+.daily-task-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.daily-task-modal {
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  padding: 24px;
+  border: 1px solid #383943;
+  border-radius: 14px;
+  background: #191a1f;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.55);
+}
+
+.daily-task-modal h3 {
+  margin: 0 0 18px;
+  color: #f1f1f3;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.daily-task-modal label {
+  display: block;
+  margin-bottom: 7px;
+  color: #9a9ba5;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.daily-task-modal input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid #41424b;
+  border-radius: 8px;
+  background: #111217;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+}
+
+.daily-task-modal input:focus {
+  border-color: #ffc94d;
+}
+
+.daily-task-modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.daily-task-modal-actions button {
+  flex: 1;
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.daily-task-modal-cancel {
+  border: 1px solid #3b3c45;
+  background: #202127;
+  color: #bfc0c8;
+}
+
+.daily-task-modal-cancel:hover {
+  background: #292a31;
+  color: #ffffff;
+}
+
+.daily-task-modal-save {
+  border: none;
+  background: #ffc94d;
+  color: #17181c;
+}
+
+.daily-task-modal-save:hover {
+  background: #ffd66b;
+}
+
+.daily-task-modal-save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 
@@ -1498,72 +1723,206 @@
   .history-navigation-button {
     width: 44px;
     height: 44px;
-
     font-size: 26px;
   }
 
 
-  /*
+  /* =======================================================
      MOBILE DAILY GRID
+     ======================================================= */
 
-     Here we intentionally make the grid wider.
-     The user can horizontally scroll through the
-     seven days while the task column remains visible.
-  */
+  .daily-history-scroll {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
 
   .daily-history-grid {
-    width: max-content;
-
+    width: 100%;
+    min-width: 320px;
     grid-template-columns:
-      160px
-      repeat(7, 90px);
+      minmax(100px, 1fr)
+      repeat(7, minmax(0, 1fr));
   }
 
   .daily-task-row {
     grid-template-columns:
-      160px
-      repeat(7, 90px);
+      minmax(100px, 1fr)
+      repeat(7, minmax(0, 1fr));
   }
 
 
-  .daily-task-name-header,
-  .daily-date {
-    min-height: 110px;
-  }
+  /* =======================================================
+     MOBILE TASK HEADER
+     ======================================================= */
 
   .daily-task-name-header {
-    padding: 14px;
+    min-height: 92px;
+    padding: 10px 7px;
+    font-size: 13px;
+    position: sticky;
+    left: 0;
+    z-index: 10;
   }
 
-  .daily-task-name {
-    padding: 12px;
-    gap: 8px;
+
+  /* =======================================================
+     MOBILE DATE HEADER
+     ======================================================= */
+
+  .daily-date {
+    min-width: 0;
+    min-height: 92px;
+    padding: 5px 1px;
+    gap: 2px;
   }
 
-  .daily-task-title {
-    font-size: 14px;
-  }
-
-  .daily-task-actions {
-    gap: 4px;
-  }
-
-  .daily-task-actions button {
-    padding: 5px 6px;
-
-    font-size: 10px;
+  .daily-date span {
+    font-size: 8px;
+    font-weight: 700;
   }
 
   .daily-date strong {
-    font-size: 20px;
+    font-size: 16px;
   }
+
+  .daily-date small {
+    margin-top: 2px;
+    font-size: 6px;
+  }
+
+
+  /* =======================================================
+     MOBILE TASK NAME
+     ======================================================= */
+
+  .daily-task-name {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 5px;
+    position: sticky;
+    left: 0;
+    z-index: 10;
+  }
+
+  .daily-task-title {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+
+  /* =======================================================
+     MOBILE THREE DOT BUTTON
+     ======================================================= */
+
+  .daily-task-menu-button {
+    width: 22px;
+    height: 27px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid #34353d;
+    border-radius: 6px;
+    background: #202127;
+    color: #bfc0c8;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .daily-task-menu-button:hover {
+    background: #292a31;
+    color: #ffffff;
+  }
+
+
+  /* =======================================================
+     MOBILE DAILY CELLS
+     ======================================================= */
 
   .daily-cell {
-    font-size: 21px;
+    min-width: 0;
+    min-height: 58px;
+    padding: 0;
+    font-size: 16px;
+  }
+
+  .daily-cell.completed {
+    font-size: 18px;
   }
 
 
-  /* Daily performance */
+  /* =======================================================
+     MOBILE ACTION POPUP
+     ======================================================= */
+
+  .daily-task-action-backdrop {
+    padding: 18px;
+  }
+
+  .daily-task-action-popup {
+    width: 100%;
+    max-width: 320px;
+    padding: 0;
+    border-radius: 13px;
+  }
+
+  .daily-task-action-header {
+    padding: 15px 16px;
+    font-size: 14px;
+  }
+
+  .daily-task-action-close {
+    width: 28px;
+    height: 28px;
+    font-size: 19px;
+  }
+
+  .daily-task-action-task-name {
+    padding: 16px;
+    font-size: 15px;
+  }
+
+  .daily-task-action-buttons {
+    gap: 8px;
+    padding: 0 16px 16px;
+  }
+
+  .daily-task-action-buttons button {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+
+  /* =======================================================
+     MOBILE EDIT MODAL
+     ======================================================= */
+
+  .daily-task-modal-backdrop {
+    padding: 16px;
+  }
+
+  .daily-task-modal {
+    max-width: 360px;
+    padding: 20px;
+  }
+
+
+  /* =======================================================
+     DAILY PERFORMANCE
+     ======================================================= */
 
   .daily-performance {
     padding: 18px;
@@ -1578,7 +1937,9 @@
   }
 
 
-  /* Weekly performance */
+  /* =======================================================
+     WEEKLY PERFORMANCE
+     ======================================================= */
 
   .weekly-performance {
     padding: 18px;
@@ -1605,80 +1966,213 @@
   }
 
 
-  /* Weekly tasks */
+  /* =======================================================
+   WEEKLY TASKS
+   ======================================================= */
 
-  .weekly-task {
-    align-items: flex-start;
-    flex-direction: column;
-  }
+.weekly-task {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 10px;
+}
 
-  .weekly-task-actions {
-    width: 100%;
-  }
+.weekly-task-main {
+  min-width: 0;
+  flex: 1;
+  gap: 8px;
+}
 
-  .weekly-task-actions button {
-    flex: 1;
-  }
+.weekly-task-main input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
 
-  .weekly-task-edit {
-    flex-wrap: wrap;
-  }
+.weekly-task-main span {
+  min-width: 0;
+  font-size: 14px;
+}
 
-  .weekly-task-edit input {
-    width: 100%;
-    flex-basis: 100%;
-  }
+.weekly-task-actions {
+  width: auto;
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
 
-  .weekly-task-edit button {
-    flex: 1;
-  }
-
-
-  /* Goals */
-
-  .goal-item {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .goal-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .goal-editing {
-    align-items: stretch;
-  }
-
-  .goal-edit-form {
-    width: 100%;
-
-    flex-direction: column;
-  }
-
-  .goal-edit-form input,
-  .goal-edit-form select {
-    width: 100%;
-
-    box-sizing: border-box;
-  }
-
-  .goal-editing .goal-actions {
-    width: 100%;
-  }
+.weekly-task-actions button {
+  flex: none;
+  min-height: 32px;
+  padding: 6px 8px;
+  font-size: 12px;
+}
 
 
-  /* Goal form */
+/* =======================================================
+   WEEKLY EDITING
+   ======================================================= */
 
-  .add-goal-form {
-    flex-direction: column;
-  }
+.weekly-task-edit {
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
 
-  .add-goal-form input,
-  .add-goal-form select,
-  .add-goal-form button {
-    width: 100%;
-  }
+.weekly-task-edit input {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+}
+
+.weekly-task-edit-actions {
+  width: auto;
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.weekly-task-edit-actions button {
+  flex: none;
+  min-height: 36px;
+  padding: 7px 9px;
+}
+/* =======================================================
+   FREE TIME
+   ======================================================= */
+
+.free-time-task {
+  padding: 14px;
+  gap: 12px;
+}
+
+.free-time-task-title {
+  font-size: 14px;
+}
+
+.free-time-task-actions {
+  gap: 6px;
+}
+
+.free-time-task-actions button {
+  padding: 7px 9px;
+  font-size: 12px;
+}
+
+.free-time-task-edit {
+  flex-wrap: wrap;
+}
+
+.free-time-task-edit input {
+  width: 100%;
+  flex-basis: 100%;
+}
+
+.free-time-task-edit-actions {
+  width: 100%;
+}
+
+.free-time-task-edit-actions button {
+  flex: 1;
+}
+
+.free-time-empty-state {
+  padding: 32px 16px;
+}
+
+  /* =======================================================
+   GOALS
+   ======================================================= */
+
+.goal-item {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 10px;
+}
+
+.goal-main {
+  min-width: 0;
+  flex: 1;
+  gap: 8px;
+}
+
+.goal-main input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.goal-main span {
+  min-width: 0;
+  font-size: 14px;
+}
+
+.goal-actions {
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.goal-priority {
+  padding: 4px 7px;
+  font-size: 9px;
+}
+
+.goal-actions button {
+  min-height: 32px;
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+
+/* =======================================================
+   GOAL EDITING
+   ======================================================= */
+
+.goal-editing {
+  align-items: stretch;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.goal-edit-form {
+  width: 100%;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.goal-edit-form input {
+  min-width: 0;
+  flex: 1;
+}
+
+.goal-edit-form select {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.goal-editing .goal-actions {
+  width: 100%;
+}
+
+.goal-editing .goal-actions button {
+  flex: 1;
+  min-height: 38px;
+}
+
+
+/* =======================================================
+   GOAL EMPTY STATE
+   ======================================================= */
+
+.goal-empty-state {
+  padding: 36px 18px;
+}
 
 
   /* Weekly navigation */
@@ -1690,8 +2184,266 @@
   .weekly-week-label {
     font-size: 17px;
   }
+
+
+  /* Daily modal */
+
+  .daily-task-modal {
+    max-width: 100%;
+    padding: 20px;
+  }
 }
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
 button:focus-visible {
   outline: 2px solid #ffc94d;
   outline-offset: 2px;
+}
+
+/* =========================================================
+   TAB THEMES
+   ========================================================= */
+
+/*
+ * Each tab has its own visual identity.
+ *
+ * The colors are intentionally muted so the app still
+ * feels like one product rather than four different apps.
+ */
+
+.app {
+  --theme-accent: #ffc94d;
+  --theme-accent-soft: #302e25;
+  --theme-accent-border: #5a5030;
+  --theme-accent-glow: rgba(255, 201, 77, 0.10);
+}
+
+
+/* =========================================================
+   DAILY
+   Warm amber
+   ========================================================= */
+
+.app.theme-daily {
+  --theme-accent: #ffc94d;
+  --theme-accent-soft: #302e25;
+  --theme-accent-border: #5a5030;
+  --theme-accent-glow: rgba(255, 201, 77, 0.10);
+}
+
+
+/* =========================================================
+   WEEKLY
+   Calm blue
+   ========================================================= */
+
+.app.theme-weekly {
+  --theme-accent: #78b7ff;
+  --theme-accent-soft: #242c39;
+  --theme-accent-border: #3d536d;
+  --theme-accent-glow: rgba(120, 183, 255, 0.09);
+}
+
+
+/* =========================================================
+   GOALS
+   Muted violet
+   ========================================================= */
+
+.app.theme-goals {
+  --theme-accent: #b89cff;
+  --theme-accent-soft: #2b2738;
+  --theme-accent-border: #51456d;
+  --theme-accent-glow: rgba(184, 156, 255, 0.09);
+}
+
+
+/* =========================================================
+   FREE TIME
+   Soft teal
+   ========================================================= */
+
+.app.theme-freeTime {
+  --theme-accent: #72d6c2;
+  --theme-accent-soft: #243431;
+  --theme-accent-border: #3d5b55;
+  --theme-accent-glow: rgba(114, 214, 194, 0.09);
+}
+
+
+/* =========================================================
+   ACTIVE TAB
+   ========================================================= */
+
+.app .tabs button.active {
+  background: var(--theme-accent-soft);
+  border-color: var(--theme-accent-border);
+  color: var(--theme-accent);
+}
+
+
+/* =========================================================
+   MAIN SECTION IDENTITY
+   ========================================================= */
+
+.app .tasks > h2 {
+  color: var(--theme-accent);
+}
+
+
+/* =========================================================
+   ADD BUTTON
+   ========================================================= */
+
+.app .tasks form button,
+.app .add-goal-form button {
+  background: var(--theme-accent);
+  color: #17181c;
+}
+
+.app .tasks form button:hover,
+.app .add-goal-form button:hover {
+  background: var(--theme-accent);
+  filter: brightness(1.08);
+}
+
+
+/* =========================================================
+   FORM FOCUS
+   ========================================================= */
+
+.app .tasks form input[type="text"]:focus,
+.app .add-goal-form input:focus,
+.app .add-goal-form select:focus {
+  border-color: var(--theme-accent-border);
+  box-shadow: 0 0 0 3px var(--theme-accent-glow);
+}
+
+
+/* =========================================================
+   CHECKBOX ACCENT
+   ========================================================= */
+
+.app input[type="checkbox"] {
+  accent-color: var(--theme-accent);
+}
+
+
+/* =========================================================
+   DAILY CELLS
+   ========================================================= */
+
+.app.theme-daily .daily-date.selected {
+  background: var(--theme-accent-soft);
+  color: var(--theme-accent);
+}
+
+.app.theme-daily .daily-date.selected span,
+.app.theme-daily .daily-date.selected strong,
+.app.theme-daily .daily-date.selected small {
+  color: var(--theme-accent);
+}
+
+.app.theme-daily .daily-cell.completed {
+  background: var(--theme-accent-soft);
+  color: var(--theme-accent);
+}
+
+
+/* =========================================================
+   WEEKLY IDENTITY
+   ========================================================= */
+
+.app.theme-weekly .weekly-week-label {
+  color: var(--theme-accent);
+}
+
+.app.theme-weekly .weekly-nav-arrow:hover,
+.app.theme-weekly .weekly-current-button:hover {
+  border-color: var(--theme-accent-border);
+  color: var(--theme-accent);
+}
+
+.app.theme-weekly .weekly-task:hover {
+  border-color: var(--theme-accent-border);
+}
+
+.app.theme-weekly .weekly-task-main input {
+  accent-color: var(--theme-accent);
+}
+
+
+/* =========================================================
+   GOALS IDENTITY
+   ========================================================= */
+
+.app.theme-goals .goal-item:hover {
+  border-color: var(--theme-accent-border);
+}
+
+.app.theme-goals .goal-main input {
+  accent-color: var(--theme-accent);
+}
+
+.app.theme-goals .goal-priority {
+  background: var(--theme-accent-soft);
+}
+
+.app.theme-goals .goal-edit-form input:focus,
+.app.theme-goals .goal-edit-form select:focus {
+  border-color: var(--theme-accent);
+}
+
+.app.theme-goals .goal-actions .goal-save {
+  background: var(--theme-accent);
+}
+
+.app.theme-goals .goal-actions .goal-save:hover {
+  background: var(--theme-accent);
+  filter: brightness(1.08);
+}
+
+
+/* =========================================================
+   FREE TIME IDENTITY
+   ========================================================= */
+
+.app.theme-freeTime .free-time-task:hover {
+  border-color: var(--theme-accent-border);
+}
+
+.app.theme-freeTime .free-time-task-edit input:focus {
+  border-color: var(--theme-accent);
+}
+
+
+/* =========================================================
+   SUBTLE SECTION GLOW
+   ========================================================= */
+
+/*
+ * Very faint top glow.
+ *
+ * This is deliberately restrained. The user should notice
+ * the atmosphere, not think the app has entered a boss battle.
+ */
+
+.app.theme-daily .tasks {
+  box-shadow: inset 0 1px 0 var(--theme-accent-glow);
+}
+
+.app.theme-weekly .tasks {
+  box-shadow: inset 0 1px 0 var(--theme-accent-glow);
+}
+
+.app.theme-goals .tasks {
+  box-shadow: inset 0 1px 0 var(--theme-accent-glow);
+}
+
+.app.theme-freeTime .tasks {
+  box-shadow: inset 0 1px 0 var(--theme-accent-glow);
 }

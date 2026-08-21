@@ -1,602 +1,739 @@
 import {
-useEffect,
-useRef,
-useState,
+  useEffect,
+  useRef,
+  useState,
 } from 'react'
 
 import type { DailyTask } from '../types'
 
 import {
-addDays,
-getDayName,
-getDayNumber,
-getSixMonthsAgo,
-getTodayDate,
-getWeekDates,
-getWeekStart,
-isBeforeDate,
+  addDays,
+  getDayName,
+  getDayNumber,
+  getSixMonthsAgo,
+  getTodayDate,
+  getWeekDates,
+  getWeekStart,
+  isBeforeDate,
 } from '../utils/dateUtils'
 
 type DailyHistoryGridProps = {
-tasks: DailyTask[]
-selectedDate: string
-onSelectedDateChange: (
-date: string,
-) => void
-onToggleTask: (
-id: number,
-date: string,
-) => void
-onDeleteTask: (
-id: number,
-) => void
-onEditTask: (
-id: number,
-title: string,
-) => void
+  tasks: DailyTask[]
+  selectedDate: string
+  onSelectedDateChange: (
+    date: string,
+  ) => void
+  onToggleTask: (
+    id: number,
+    date: string,
+  ) => void
+  onDeleteTask: (
+    id: number,
+  ) => void
+  onEditTask: (
+    id: number,
+    title: string,
+  ) => void
 }
 
 function DailyHistoryGrid({
-tasks,
-selectedDate,
-onSelectedDateChange,
-onToggleTask,
-onDeleteTask,
-onEditTask,
+  tasks,
+  selectedDate,
+  onSelectedDateChange,
+  onToggleTask,
+  onDeleteTask,
+  onEditTask,
 }: DailyHistoryGridProps) {
-const selectedDateRef =
-useRef<HTMLButtonElement | null>(
-null,
-)
+  const selectedDateRef =
+    useRef<HTMLButtonElement | null>(
+      null,
+    )
 
-const [
-editingTaskId,
-setEditingTaskId,
-] = useState<number | null>(null)
+  const [
+    editingTaskId,
+    setEditingTaskId,
+  ] = useState<number | null>(null)
 
-const [
-editedTitle,
-setEditedTitle,
-] = useState('')
+  const [
+    editedTitle,
+    setEditedTitle,
+  ] = useState('')
 
-const dates =
-getWeekDates(selectedDate)
+  const [
+    menuTaskId,
+    setMenuTaskId,
+  ] = useState<number | null>(null)
 
-const today =
-getTodayDate()
+  const dates =
+    getWeekDates(selectedDate)
 
-const oldestDate =
-getSixMonthsAgo()
+  const today =
+    getTodayDate()
 
-const firstDate =
-dates[0]
+  const oldestDate =
+    getSixMonthsAgo()
 
-const previousWeekStart =
-addDays(
-firstDate,
--7,
-)
+  const firstDate =
+    dates[0]
 
-const canGoPrevious =
-!isBeforeDate(
-previousWeekStart,
-oldestDate,
-)
+  const previousWeekStart =
+    addDays(
+      firstDate,
+      -7,
+    )
 
-/*
+  const canGoPrevious =
+    !isBeforeDate(
+      previousWeekStart,
+      oldestDate,
+    )
 
-* Current week's Monday.
-  */
   const currentWeekStart =
-  getWeekStart(today)
+    getWeekStart(today)
 
-/*
-
-* Is the currently displayed
-* week the current week?
-  */
   const isCurrentWeek =
-  firstDate ===
-  currentWeekStart
+    firstDate ===
+    currentWeekStart
 
-/*
-
-* Future week protection.
-*
-* This should normally be false
-* because the next button is
-* disabled on the current week,
-* but this provides an additional
-* safety check.
-  */
   const goToPreviousWeek = () => {
-  if (!canGoPrevious) {
-  return
+    if (!canGoPrevious) {
+      return
+    }
+
+    onSelectedDateChange(
+      addDays(
+        selectedDate,
+        -7,
+      ),
+    )
   }
 
-onSelectedDateChange(
+  const goToNextWeek = () => {
+    if (isCurrentWeek) {
+      return
+    }
 
-  addDays(
-    selectedDate,
-    -7,
-  ),
-)
+    const nextWeekStart =
+      addDays(
+        firstDate,
+        7,
+      )
 
-}
+    if (
+      nextWeekStart >
+      currentWeekStart
+    ) {
+      return
+    }
 
-const goToNextWeek = () => {
-if (isCurrentWeek) {
-return
-}
+    onSelectedDateChange(
+      addDays(
+        selectedDate,
+        7,
+      ),
+    )
+  }
 
-const nextWeekStart =
-  addDays(
-    firstDate,
-    7,
-  )
+  useEffect(() => {
+    selectedDateRef.current?.scrollIntoView(
+      {
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'nearest',
+      },
+    )
+  }, [selectedDate])
 
-if (
-  nextWeekStart >
-  currentWeekStart
-) {
-  return
-}
-
-onSelectedDateChange(
-  addDays(
-    selectedDate,
-    7,
-  ),
-)
-
-}
-
-useEffect(() => {
-selectedDateRef.current?.scrollIntoView(
-{
-behavior: 'smooth',
-block: 'nearest',
-inline: 'nearest',
-},
-)
-}, [selectedDate])
-
-const isFutureDate = (
-date: string,
-) => {
-return date > today
-}
-
-const startEditing = (
-task: DailyTask,
-) => {
-setEditingTaskId(
-task.id,
-)
-
-setEditedTitle(
-  task.title,
-)
-
-}
-
-const cancelEditing = () => {
-setEditingTaskId(null)
-setEditedTitle('')
-}
-
-const saveEdit = (
-id: number,
-) => {
-const trimmedTitle =
-editedTitle.trim()
-
-if (!trimmedTitle) {
-  return
-}
-
-onEditTask(
-  id,
-  trimmedTitle,
-)
-
-setEditingTaskId(null)
-setEditedTitle('')
-
-}
-
-/*
-
-* Prevent selecting a future
-* date from the header.
-  */
-  const selectDate = (
-  date: string,
+  const isFutureDate = (
+    date: string,
   ) => {
-  if (isFutureDate(date)) {
-  return
+    return date > today
   }
-onSelectedDateChange(date)
 
-}
+  /*
+   * Open / close the task action popup.
+   */
+  const toggleTaskMenu = (
+    taskId: number,
+  ) => {
+    setMenuTaskId(
+      current =>
+        current === taskId
+          ? null
+          : taskId,
+    )
+  }
 
-return ( <section className="daily-history-container">
+  /*
+   * Start editing.
+   */
+  const startEditing = (
+    task: DailyTask,
+  ) => {
+    setMenuTaskId(null)
 
-  {/* =========================
-      WEEK NAVIGATION
-     ========================= */}
+    setEditingTaskId(
+      task.id,
+    )
 
-  <div className="daily-week-navigation">
+    setEditedTitle(
+      task.title,
+    )
+  }
 
-    <button
-      type="button"
-      className="history-navigation-button"
-      onClick={
-        goToPreviousWeek
-      }
-      disabled={
-        !canGoPrevious
-      }
-      aria-label="Previous week"
-    >
-      ‹
-    </button>
+  /*
+   * Close edit popup.
+   */
+  const cancelEditing = () => {
+    setEditingTaskId(null)
+    setEditedTitle('')
+  }
 
+  /*
+   * Save edited task.
+   */
+  const saveEdit = (
+    id: number,
+  ) => {
+    const trimmedTitle =
+      editedTitle.trim()
 
-    <div className="daily-week-label">
-      {dates[0]} – {dates[6]}
-    </div>
+    if (!trimmedTitle) {
+      return
+    }
 
+    onEditTask(
+      id,
+      trimmedTitle,
+    )
 
-    <button
-      type="button"
-      className="history-navigation-button"
-      onClick={
-        goToNextWeek
-      }
-      disabled={
-        isCurrentWeek
-      }
-      aria-label="Next week"
-    >
-      ›
-    </button>
+    setEditingTaskId(null)
+    setEditedTitle('')
+  }
 
-  </div>
+  /*
+   * Delete task.
+   */
+  const deleteTask = (
+    task: DailyTask,
+  ) => {
+    setMenuTaskId(null)
 
+    const confirmed =
+      window.confirm(
+        `Delete "${task.title}"?`,
+      )
 
-  {/* =========================
-      DAILY GRID
-     ========================= */}
+    if (confirmed) {
+      onDeleteTask(
+        task.id,
+      )
+    }
+  }
 
-  <div className="daily-history-scroll">
+  /*
+   * Prevent selecting
+   * future dates.
+   */
+  const selectDate = (
+    date: string,
+  ) => {
+    if (isFutureDate(date)) {
+      return
+    }
 
-    <div className="daily-history-grid">
+    onSelectedDateChange(date)
+  }
+
+  /*
+   * Find the task currently
+   * selected in the action popup.
+   */
+  const menuTask =
+    tasks.find(
+      task =>
+        task.id ===
+        menuTaskId,
+    )
+
+  return (
+    <section className="daily-history-container">
 
       {/* =========================
-          HEADER
+          WEEK NAVIGATION
          ========================= */}
 
-      <div className="daily-task-name-header">
-        <span>
-          Tasks
-        </span>
+      <div className="daily-week-navigation">
+
+        <button
+          type="button"
+          className="history-navigation-button"
+          onClick={
+            goToPreviousWeek
+          }
+          disabled={
+            !canGoPrevious
+          }
+          aria-label="Previous week"
+        >
+          ‹
+        </button>
+
+        <div className="daily-week-label">
+          {dates[0]} – {dates[6]}
+        </div>
+
+        <button
+          type="button"
+          className="history-navigation-button"
+          onClick={
+            goToNextWeek
+          }
+          disabled={
+            isCurrentWeek
+          }
+          aria-label="Next week"
+        >
+          ›
+        </button>
+
       </div>
 
 
-      {dates.map(
-        (date) => {
-          const isSelected =
-            date ===
-            selectedDate
+      {/* =========================
+          DAILY GRID
+         ========================= */}
 
-          const isToday =
-            date === today
+      <div className="daily-history-scroll">
 
-          const isFuture =
-            isFutureDate(
-              date,
-            )
+        <div className="daily-history-grid">
 
-          return (
-            <button
-              type="button"
-              key={date}
-              ref={
-                isSelected
-                  ? selectedDateRef
-                  : null
-              }
-              className={[
-                'daily-date',
-                isSelected
-                  ? 'selected'
-                  : '',
-                isToday
-                  ? 'today'
-                  : '',
-                isFuture
-                  ? 'future'
-                  : '',
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              onClick={() =>
-                selectDate(date)
-              }
-              disabled={
-                isFuture
-              }
-              aria-label={`Select ${date}`}
-            >
+          {/* =========================
+              HEADER
+             ========================= */}
 
-              <span>
-                {getDayName(
+          <div className="daily-task-name-header">
+            <span>
+              Tasks
+            </span>
+          </div>
+
+
+          {dates.map(
+            date => {
+              const isSelected =
+                date ===
+                selectedDate
+
+              const isToday =
+                date === today
+
+              const isFuture =
+                isFutureDate(
                   date,
-                )}
-              </span>
+                )
+
+              return (
+                <button
+                  type="button"
+                  key={date}
+                  ref={
+                    isSelected
+                      ? selectedDateRef
+                      : null
+                  }
+                  className={[
+                    'daily-date',
+                    isSelected
+                      ? 'selected'
+                      : '',
+                    isToday
+                      ? 'today'
+                      : '',
+                    isFuture
+                      ? 'future'
+                      : '',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                  onClick={() =>
+                    selectDate(date)
+                  }
+                  disabled={
+                    isFuture
+                  }
+                  aria-label={`Select ${date}`}
+                >
+
+                  <span>
+                    {getDayName(
+                      date,
+                    )}
+                  </span>
+
+                  <strong>
+                    {getDayNumber(
+                      date,
+                    )}
+                  </strong>
+
+                  {isToday && (
+                    <small>
+                      TODAY
+                    </small>
+                  )}
+
+                </button>
+              )
+            },
+          )}
+
+
+          {/* =========================
+              EMPTY STATE
+             ========================= */}
+
+          {tasks.length === 0 && (
+            <div className="daily-empty-state">
 
               <strong>
-                {getDayNumber(
-                  date,
-                )}
+                No daily tasks yet.
               </strong>
 
-              {isToday && (
-                <small>
-                  TODAY
-                </small>
-              )}
+              <span>
+                Add your first daily
+                task below.
+              </span>
 
-            </button>
-          )
-        },
-      )}
+            </div>
+          )}
 
 
-      {/* =========================
-          EMPTY STATE
-         ========================= */}
+          {/* =========================
+              TASK ROWS
+             ========================= */}
 
-      {tasks.length === 0 && (
-        <div className="daily-empty-state">
+          {tasks.map(
+            task => {
 
-          <strong>
-            No daily tasks yet.
-          </strong>
+              return (
+                <div
+                  className="daily-task-row"
+                  key={task.id}
+                >
 
-          <span>
-            Add your first daily
-            task below.
-          </span>
+                  {/* =========================
+                      TASK NAME
+                     ========================= */}
 
-        </div>
-      )}
-
-
-      {/* =========================
-          TASK ROWS
-         ========================= */}
-
-      {tasks.map(
-        (task) => {
-
-          const isEditing =
-            editingTaskId ===
-            task.id
-
-          return (
-            <div
-              className="daily-task-row"
-              key={task.id}
-            >
-
-              {/* =========================
-                  TASK NAME + ACTIONS
-                 ========================= */}
-
-              <div
-                className="daily-task-name"
-                title={
-                  isEditing
-                    ? undefined
-                    : task.title
-                }
-              >
-
-                {isEditing ? (
-                  <div className="daily-task-edit">
-
-                    <input
-                      type="text"
-                      value={
-                        editedTitle
-                      }
-                      onChange={(
-                        event,
-                      ) =>
-                        setEditedTitle(
-                          event.target
-                            .value,
-                        )
-                      }
-                      autoFocus
-                      onKeyDown={(
-                        event,
-                      ) => {
-                        if (
-                          event.key ===
-                          'Enter'
-                        ) {
-                          saveEdit(
-                            task.id,
-                          )
-                        }
-
-                        if (
-                          event.key ===
-                          'Escape'
-                        ) {
-                          cancelEditing()
-                        }
-                      }}
-                    />
-
-                    <button
-                      type="button"
-                      className="daily-edit-save"
-                      onClick={() =>
-                        saveEdit(
-                          task.id,
-                        )
-                      }
-                    >
-                      Save
-                    </button>
-
-                    <button
-                      type="button"
-                      className="daily-edit-cancel"
-                      onClick={
-                        cancelEditing
-                      }
-                    >
-                      Cancel
-                    </button>
-
-                  </div>
-                ) : (
-                  <>
+                  <div
+                    className="daily-task-name"
+                    title={task.title}
+                  >
 
                     <span className="daily-task-title">
                       {task.title}
                     </span>
 
-                    <div className="daily-task-actions">
 
-                      <button
-                        type="button"
-                        onClick={() =>
-                          startEditing(
-                            task,
-                          )
-                        }
-                      >
-                        Edit
-                      </button>
+                    {/* =========================
+                        THREE DOT BUTTON
+                       ========================= */}
 
-                      <button
-                        type="button"
-onClick={() => {
-  const confirmed = window.confirm(
-    `Delete "${task.title}"?`,
-  )
-
-  if (confirmed) {
-    onDeleteTask(task.id)
-  }
-}}
-                      >
-                        Delete
-                      </button>
-
-                    </div>
-
-                  </>
-                )}
-
-              </div>
-
-
-              {/* =========================
-                  COMPLETION CELLS
-                 ========================= */}
-
-              {dates.map(
-                (date) => {
-
-const beforeTaskCreated =
-  date < task.createdAt
-
-const completed =
-  task.completions[
-    date
-  ] ??
-  false
-
-const future =
-  isFutureDate(
-    date,
-  )
-
-                  return (
-<button
-  type="button"
-  key={`${task.id}-${date}`}
-  className={[
-    'daily-cell',
-    completed
-      ? 'completed'
-      : '',
-    future
-      ? 'future'
-      : '',
-    beforeTaskCreated
-      ? 'before-created'
-      : '',
-  ]
-    .filter(
-      Boolean,
-    )
-    .join(
-      ' ',
-    )}
-  disabled={
-    future ||
-    beforeTaskCreated
-  }
+                    <button
+                      type="button"
+                      className="daily-task-menu-button"
                       onClick={() =>
-                        onToggleTask(
+                        toggleTaskMenu(
                           task.id,
-                          date,
                         )
                       }
-                      aria-label={
-                        future
-                          ? `${task.title} - future date`
-                          : `${task.title} - ${
-                              completed
-                                ? 'completed'
-                                : 'not completed'
-                            }`
+                      aria-label={`Manage ${task.title}`}
+                      aria-expanded={
+                        menuTaskId ===
+                        task.id
                       }
                     >
-
-{beforeTaskCreated
-  ? ''
-  : future
-    ? '·'
-    : completed
-      ? '✓'
-      : '×'}
-
+                      ⋮
                     </button>
-                  )
-                },
-              )}
+
+                  </div>
+
+
+                  {/* =========================
+                      COMPLETION CELLS
+                     ========================= */}
+
+                  {dates.map(
+                    date => {
+
+                      const beforeTaskCreated =
+                        date <
+                        task.createdAt
+
+                      const completed =
+                        task.completions[
+                          date
+                        ] ??
+                        false
+
+                      const future =
+                        isFutureDate(
+                          date,
+                        )
+
+                      return (
+                        <button
+                          type="button"
+                          key={`${task.id}-${date}`}
+                          className={[
+                            'daily-cell',
+                            completed
+                              ? 'completed'
+                              : '',
+                            future
+                              ? 'future'
+                              : '',
+                            beforeTaskCreated
+                              ? 'before-created'
+                              : '',
+                          ]
+                            .filter(
+                              Boolean,
+                            )
+                            .join(' ')}
+                          disabled={
+                            future ||
+                            beforeTaskCreated
+                          }
+                          onClick={() =>
+                            onToggleTask(
+                              task.id,
+                              date,
+                            )
+                          }
+                          aria-label={
+                            future
+                              ? `${task.title} - future date`
+                              : `${task.title} - ${
+                                  completed
+                                    ? 'completed'
+                                    : 'not completed'
+                                }`
+                          }
+                        >
+                          {beforeTaskCreated
+                            ? ''
+                            : future
+                              ? '·'
+                              : completed
+                                ? '✓'
+                                : '×'}
+                        </button>
+                      )
+                    },
+                  )}
+
+                </div>
+              )
+            },
+          )}
+
+        </div>
+
+      </div>
+
+
+      {/* =====================================================
+          TASK ACTION POPUP
+         ===================================================== */}
+
+      {menuTask && (
+        <div
+          className="daily-task-action-backdrop"
+          onMouseDown={event => {
+            if (
+              event.target ===
+              event.currentTarget
+            ) {
+              setMenuTaskId(null)
+            }
+          }}
+        >
+
+          <div
+            className="daily-task-action-popup"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="daily-task-action-title"
+          >
+
+            <div className="daily-task-action-header">
+
+              <span>
+                Task options
+              </span>
+
+              <button
+                type="button"
+                className="daily-task-action-close"
+                onClick={() =>
+                  setMenuTaskId(null)
+                }
+                aria-label="Close"
+              >
+                ×
+              </button>
 
             </div>
-          )
-        },
+
+
+            <div
+              id="daily-task-action-title"
+              className="daily-task-action-task-name"
+              title={menuTask.title}
+            >
+              {menuTask.title}
+            </div>
+
+
+            <div className="daily-task-action-buttons">
+
+              <button
+                type="button"
+                className="daily-task-action-edit"
+                onClick={() =>
+                  startEditing(
+                    menuTask,
+                  )
+                }
+              >
+                Edit
+              </button>
+
+              <button
+                type="button"
+                className="daily-task-action-delete"
+                onClick={() =>
+                  deleteTask(
+                    menuTask,
+                  )
+                }
+              >
+                Delete
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
       )}
 
-    </div>
 
-  </div>
+      {/* =====================================================
+          EDIT TASK MODAL
+         ===================================================== */}
 
-</section>
+      {editingTaskId !== null && (
+        <div
+          className="daily-task-modal-backdrop"
+          onMouseDown={event => {
+            if (
+              event.target ===
+              event.currentTarget
+            ) {
+              cancelEditing()
+            }
+          }}
+        >
 
-)
+          <div
+            className="daily-task-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="edit-daily-task-title"
+          >
+
+            <h3 id="edit-daily-task-title">
+              Edit Daily Task
+            </h3>
+
+            <label
+              htmlFor="daily-task-edit-input"
+            >
+              Task name
+            </label>
+
+            <input
+              id="daily-task-edit-input"
+              type="text"
+              value={
+                editedTitle
+              }
+              onChange={event =>
+                setEditedTitle(
+                  event.target.value,
+                )
+              }
+              autoFocus
+              onKeyDown={event => {
+
+                if (
+                  event.key ===
+                  'Enter'
+                ) {
+                  saveEdit(
+                    editingTaskId,
+                  )
+                }
+
+                if (
+                  event.key ===
+                  'Escape'
+                ) {
+                  cancelEditing()
+                }
+
+              }}
+            />
+
+            <div className="daily-task-modal-actions">
+
+              <button
+                type="button"
+                className="daily-task-modal-cancel"
+                onClick={
+                  cancelEditing
+                }
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                className="daily-task-modal-save"
+                onClick={() =>
+                  saveEdit(
+                    editingTaskId,
+                  )
+                }
+                disabled={
+                  !editedTitle.trim()
+                }
+              >
+                Save
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      )}
+
+    </section>
+  )
 }
 
 export default DailyHistoryGrid
